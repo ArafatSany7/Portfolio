@@ -1,48 +1,9 @@
 @import "tailwindcss";
-@plugin "daisyui";
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  scroll-behavior: smooth;
-}
-
-html {
-  scroll-snap-type: y mandatory;
-}
 
 body {
-  background:
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(186, 104, 200, 0.24),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 80% 0%,
-      rgba(126, 87, 194, 0.22),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 50% 80%,
-      rgba(103, 58, 183, 0.18),
-      transparent 30%
-    ),
-    linear-gradient(135deg, #1b1027 0%, #2a0d3a 35%, #351d59 65%, #210b2b 100%);
-  background-size: 200% 200%;
-  animation: violetPulse 18s ease-in-out infinite;
-  color: #f4f2ff;
+  font-family: "poppins", sans-serif;
 }
-
-@keyframes violetPulse {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+h1,
+h2 {
+  font-family: "Roboto", sans-serif;
 }
