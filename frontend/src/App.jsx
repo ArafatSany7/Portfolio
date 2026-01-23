@@ -8,10 +8,12 @@ import Testimonial from "./Section/Testimonial";
 import Contact from "./Section/Contact";
 import Footer from "./Section/Footer";
 import Nav from "./Components/Nav";
+import Particle from "./Components/Particle";
 
 function App() {
   return (
-    <div>
+    <div className="relative gradient text-white">
+      <Particle></Particle>
       <Nav></Nav>
       <Home></Home>
       <About></About>
