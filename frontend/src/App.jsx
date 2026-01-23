@@ -9,10 +9,12 @@ import Contact from "./Section/Contact";
 import Footer from "./Section/Footer";
 import Nav from "./Components/Nav";
 import Particle from "./Components/Particle";
+import CustomCursor from "./Components/CustomCursor";
 
 function App() {
   return (
     <div className="relative gradient text-white">
+      <CustomCursor></CustomCursor>
       <Particle></Particle>
       <Nav></Nav>
       <Home></Home>
