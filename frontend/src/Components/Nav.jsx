@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import OverlayMenu from "./OverlayMenu";
 import Logo from "../assets/Logo.png";
 import { HiMenu } from "react-icons/hi";
@@ -6,6 +6,27 @@ import { HiMenu } from "react-icons/hi";
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [visible, setVisible] = useState(true);
+  // const [forceVisible, setForceVisible] = useState(false);
+
+  // const isScroll = useRef(0);
+  // const timerId = useRef(null);
+
+  // useEffect(() => {
+  //   const homeSection = document.querySelector("#home");
+  //   const observer = new IntersectionObserver();
+  //   ([entry]) => {
+  //     if (entry.isIntersecting) {
+  //       setForceVisible(true);
+  //       setVisible(true);
+  //     }else{
+  //       setForceVisible(false);
+  //     },{threshold 0.1}
+  //   };
+  //   if(homeSection) observer.observe(homeSection);
+  //   return (()=>{
+  //     if(homeSection) observer.unobserve(homeSection)
+  //   },[])
+  // });
   return (
     <>
       <nav
