@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="relative gradient text-white">
       <CustomCursor></CustomCursor>
-      <Particle></Particle>
+      {/* <Particle></Particle> */}
       <Nav></Nav>
       <Home></Home>
       <About></About>
