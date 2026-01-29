@@ -1,6 +1,36 @@
 import React, { useMemo } from "react";
 import Particle from "./../Components/Particle";
 import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+const social = [
+  {
+    Icon: FaXTwitter,
+    label: "X",
+    href: "https://twitter.com/yourprofile",
+  },
+  {
+    Icon: FaGithub,
+    label: "GitHub",
+    href: "https://github.com/yourprofile",
+  },
+  {
+    Icon: FaLinkedin,
+    label: "Linked",
+    href: "https://linkedin.com/yourprofile",
+  },
+];
+
+const glow = {
+  initial: { scale: 1, y: 0, filter: "drop-shadow(0 0 0 rgba(0,0,0,0))" },
+  hover: {
+    scale: 1.2,
+    y: -3,
+    filter:
+      "drop-shadow(0 0 8px rgba(13,88,204,0.9)) drop-shadow(0 0 18px rgba(16,185,129,0.8))",
+    transition: { type: "spring", stiffness: 300, damping: 15 },
+  },
+  tap: { scale: 0.95, y: 0, transition: { duration: 0.08 } },
+};
 
 const Home = () => {
   const rules = useMemo(
@@ -81,6 +111,67 @@ const Home = () => {
                 style={{ height: "1em" }}
               ></span>
             </motion.div>
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#3e2b63] drop-shadow-lg"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              Hello I'm
+              <br />
+              <span className="text-white font-bold text-5xl sm:text-6xl md:text-7xl lg:whitespace-nowrap">
+                Sany
+              </span>
+            </motion.h1>
+            <motion.p
+              className="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              Pursuing Software Engineering at Daffodil International University
+              | Aspiring Full-stack Engineer Focused on crafting
+              high-performance, interactive web experiences.
+            </motion.p>
+
+            <motion.div
+              className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+            >
+              <a
+                href="#project"
+                className="px-6 py-3 rounded-full font-medium text-lg text-white bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#302b63] shadow-lg hover:text-black hover:scale-105 transition-all duration-300"
+              >
+                View My Work
+              </a>
+              <a
+                href="/Resume.pdf"
+                download
+                className="px-6 py-3 rounded-full font-medium text-lg text-black bg-gray-200 shadow-lg hover:bg-gray-500 hover:scale-105 hover:text-white transition-all duration-300"
+              >
+                My Resume
+              </a>
+            </motion.div>
+            <div className="mt-10 flex gap-5 text-2xl md:text-3xl justify-center lg:justify-start">
+              {social.map(({ Icon, label, href }) => (
+                <motion.a
+                  href={href}
+                  key={label}
+                  target="_blank"
+                  aria-label={label}
+                  rel="noopener noreferrer"
+                  variants={glow}
+                  initial="initial"
+                  whileHover="hover"
+                  whileTap="tap"
+                  className="text-gray-300"
+                >
+                  <Icon />
+                </motion.a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
