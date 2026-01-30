@@ -10,22 +10,30 @@ import Footer from "./Section/Footer";
 import Nav from "./Components/Nav";
 import Particle from "./Components/Particle";
 import CustomCursor from "./Components/CustomCursor";
+import { useState } from "react";
+import Intro from "./Components/Intro";
 
 function App() {
+  const [introDone, setIntroDone] = useState(false);
   return (
-    <div className="relative gradient text-white">
-      <CustomCursor></CustomCursor>
-      {/* <Particle></Particle> */}
-      <Nav></Nav>
-      <Home></Home>
-      <About></About>
-      <Skill></Skill>
-      <Project></Project>
-      <Exp></Exp>
-      <Testimonial></Testimonial>
-      <Contact></Contact>
-      <Footer></Footer>
-    </div>
+    <>
+      {!introDone && <Intro onFinish={() => setIntroDone(true)}></Intro>}
+      {introDone && (
+        <div className="relative gradient text-white">
+          <CustomCursor></CustomCursor>
+          {/* <Particle></Particle> */}
+          <Nav></Nav>
+          <Home></Home>
+          <About></About>
+          <Skill></Skill>
+          <Project></Project>
+          <Exp></Exp>
+          <Testimonial></Testimonial>
+          <Contact></Contact>
+          <Footer></Footer>
+        </div>
+      )}
+    </>
   );
 }
 
