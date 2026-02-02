@@ -72,7 +72,7 @@ const Particle = () => {
   return (
     <canvas
       ref={cnRef}
-      className="fixed top-0 w-full h-full pointer-events-none z-0"
+      className="absolute top-0 w-full h-full pointer-events-none z-0"
     ></canvas>
   );
 };
