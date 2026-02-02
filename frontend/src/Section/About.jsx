@@ -34,8 +34,8 @@ const About = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.4 }}
         >
-          <motion.div className="relative w-[160px] h-[160px] md:w-[200px] md:h-[200px] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-[#1cd8d2] to-[#302b63]/20 border border-[#1cd8d2]\25">
-            <img src={p} alt="profile" className="absolute inset-0" />
+          <motion.div className="relative w-[160px] h-[160px] md:w-[200px] md:h-[200px] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-[#1cd8d2] to-[#302b63]/20 border border-[#1cd8d2]\25 hover:scale-105 transition-all duration-300">
+            <img src={p} alt="profile" className="absolute inset-0 " />
           </motion.div>
           <div className="flex flex-1 flex-col justify-center text-center md:text-left">
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#1cd8d2] to-[#98dedc]">
@@ -54,7 +54,7 @@ const About = () => {
               {stat.map((item, i) => (
                 <motion.div
                   key={i}
-                  className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center"
+                  className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center hover:scale-105 duration-300"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 * i, duration: 0.4 }}
@@ -67,7 +67,46 @@ const About = () => {
                 </motion.div>
               ))}
             </div>
+
+            <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
+              <a
+                href="#project"
+                className="inline flex items-center justify-center rounded-lg bg-white text-black font-semibold px-5 py-3 hover:bg-gray-200 hover:scale-105 transition-all duration-300"
+              >
+                View Project
+              </a>
+              <a
+                href="#contact"
+                download
+                className="inline flex items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white px-5 py-3 hover:bg-white/20 hover:scale-105 transition-all duration-300"
+              >
+                Get in Touch
+              </a>
+            </div>
           </div>
+        </motion.div>
+
+        <motion.div
+          className="text-center md:text-left"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.4 }}
+        >
+          <h3 className="text-2xl sm:text-3xl font-bold mb-3">About Me</h3>
+          <p className="text-gray-300 leading-relaxed text-base sm:text-lg">
+            I am a Software Engineering student at{" "}
+            <span className="font-bold text-green-50">
+              Daffodil International University{" "}
+            </span>
+            with a strong focus on modern, interactive web development.
+            Specializing in the MERN stack, I am passionate about building
+            functional and user-centric digital solutions. My academic journey
+            is complemented by practical experience in creating diverse web
+            platforms, including a blood donation coordination site and dynamic
+            pages for the restaurant industry. I am driven by a desire to solve
+            real-world problems through clean code and innovative design.
+          </p>
         </motion.div>
       </div>
     </section>
