@@ -19,7 +19,7 @@ const Nav = () => {
           </button>
         </div>
         <div>
-          <h1 className="text-center text-3xl font-bold">SANY</h1>
+          <h1 className="text-center text-3xl font-bold">_SANY_</h1>
         </div>
 
         <div>
