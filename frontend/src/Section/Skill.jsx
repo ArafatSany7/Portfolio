@@ -70,6 +70,29 @@ const Skill = () => {
     };
   }, [active]);
 
+  useEffect(() => {
+    let id;
+    let last = performance.now();
+    const speed = 80;
+
+    const tick = (now) => {
+      const dt = (now - last) / 1000;
+      last = now;
+      let next = x.get() + speed * dir * dt;
+      const loop = trackRef.current?.scrollwidth / 2 || 0;
+
+      if (loop) {
+        if (next <= -loop) next += loop;
+        if (next >= 0) next -= loop;
+      }
+      x.set(next);
+      id = requestAnimationFrame(tick);
+    };
+    id = requestAnimationFrame(tick);
+
+    return () => cancelAnimationFrame(id);
+  }, [dir, x]);
+
   return (
     <section
       id="skill"
@@ -101,6 +124,7 @@ const Skill = () => {
         <motion.div
           className="flex gap-10 text-6xl text-[#1cd8d2]"
           ref={trackRef}
+          style={{ x, whiteSpace: "nowrap", willChange: "transform" }}
         >
           {repeated.map((s, i) => (
             <div
