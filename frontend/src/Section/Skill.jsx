@@ -32,7 +32,7 @@ const Skill = () => {
   const [active, setActive] = useState(false);
   const secRef = useRef(null);
   const trackRef = useRef(null);
-  const touchW = useRef(null);
+  const touchY = useRef(null);
   const x = useMotionValue(0);
 
   useEffect(() => {
@@ -47,6 +47,28 @@ const Skill = () => {
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (!active) return;
+
+    const onWheel = (e) => setDir(e.deltaY > 0 ? -1 : 1);
+    const onTouch = (e) => (touchY.current = e.touches[0].clientY);
+    const onTouchMove = (e) => {
+      if (touchY.current == null) return;
+      const delta = e.touches[0].clientY - touchY.current;
+      setDir(delta > 0 ? 1 : -1);
+      touchY.current = e.touches[0].clientY;
+    };
+    window.addEventListener("wheel", onWheel, { passive: true });
+    window.addEventListener("touchStart", onTouch, { passive: true });
+    window.addEventListener("touchMove", onTouchMove, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchStart", onTouch);
+      window.removeEventListener("touchMove", onTouchMove);
+    };
+  }, [active]);
 
   return (
     <section
