@@ -1,6 +1,5 @@
 import { useState } from "react";
 import OverlayMenu from "./OverlayMenu";
-import Logo from "../assets/Logo.png";
 import { HiMenu } from "react-icons/hi";
 
 const Nav = () => {
@@ -19,7 +18,7 @@ const Nav = () => {
           </button>
         </div>
         <div>
-          <h1 className="text-center text-3xl font-bold">_ANY</h1>
+          <h1 className="text-center text-3xl font-bold">SANY</h1>
         </div>
 
         <div>

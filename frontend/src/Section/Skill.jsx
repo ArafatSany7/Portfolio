@@ -40,7 +40,7 @@ const Skill = () => {
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => {
-        setActive(entry.isIntersecting) && entry.intersectionRatio > 0.1;
+        setActive(entry.isIntersecting && entry.intersectionRatio > 0.1);
       },
       { threshold: [0.1] },
     );
@@ -60,13 +60,13 @@ const Skill = () => {
       touchY.current = e.touches[0].clientY;
     };
     window.addEventListener("wheel", onWheel, { passive: true });
-    window.addEventListener("touchStart", onTouch, { passive: true });
-    window.addEventListener("touchMove", onTouchMove, { passive: true });
+    window.addEventListener("touchstart", onTouch, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
 
     return () => {
       window.removeEventListener("wheel", onWheel);
-      window.removeEventListener("touchStart", onTouch);
-      window.removeEventListener("touchMove", onTouchMove);
+      window.removeEventListener("touchstart", onTouch);
+      window.removeEventListener("touchmove", onTouchMove);
     };
   }, [active]);
 
@@ -79,7 +79,7 @@ const Skill = () => {
       const dt = (now - last) / 1000;
       last = now;
       let next = x.get() + speed * dir * dt;
-      const loop = trackRef.current?.scrollwidth / 2 || 0;
+      const loop = trackRef.current?.scrollWidth / 2 || 0;
 
       if (loop) {
         if (next <= -loop) next += loop;
@@ -100,11 +100,11 @@ const Skill = () => {
       className="h-1/2 pb-8 w-full flex flex-col items-center justify-center relative bg-black text-white overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-0 w-[300px] h-[300px] rounded-full bg-gradient-to-r from-[#302b53] via-[#00bf8f] to-[#1cd8d2] opacity-20 blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-0 w-[300px] h-[300px] rounded-full bg-gradient-to-r from-[#302b53] via-[#00bf8f] to-[#1cd8d2] opacity-20 blur-[120px] animate-pulse delay-500" />
+        <div className="absolute top-1/2 left-0 w-75 h-75 rounded-full bg-linear-to-r from-[#302b53] via-[#00bf8f] to-[#1cd8d2] opacity-20 blur-[120px] animate-pulse" />
+        <div className="absolute bottom-1/4 right-0 w-75 h-75 rounded-full bg-linear-to-r from-[#302b53] via-[#00bf8f] to-[#1cd8d2] opacity-20 blur-[120px] animate-pulse delay-500" />
       </div>
       <motion.h2
-        className="text-4xl mt-5 sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r  from-[#589391] via-[#0becb4] to-[#302b63]"
+        className="text-4xl mt-5 sm:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-[#589391] via-[#0becb4] to-[#302b63]"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 20 }}
         transition={{ duration: 0.5, delay: 0.1 }}
@@ -129,7 +129,7 @@ const Skill = () => {
           {repeated.map((s, i) => (
             <div
               key={i}
-              className="flex flex-col items-center gap-2 min-w-[120px]"
+              className="flex flex-col items-center gap-2 min-w-30"
               aria-label={s.name}
               title={s.name}
             >
