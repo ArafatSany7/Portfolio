@@ -18,7 +18,7 @@ const Nav = () => {
           </button>
         </div>
         <div>
-          <h1 className="text-center text-3xl font-bold">SANY</h1>
+          <h1 className="text-center text-3xl font-bold">S-A-N-Y</h1>
         </div>
 
         <div>
