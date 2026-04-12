@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import img1 from "../assets/img1.png";
 import photo1 from "../assets/photo1.png";
-import img1 from "../assets/img2.png";
-import photo1 from "../assets/photo2.png";
+import img2 from "../assets/img2.png";
+import photo2 from "../assets/photo2.png";
+import { useScroll } from 'framer-motion';
 
 
 const useIsMobileHook = (query = "(max-width : 630px)") => {
@@ -22,7 +23,7 @@ const useIsMobileHook = (query = "(max-width : 630px)") => {
 
 export default function Project() {
   const isMobile = useIsMobileHook();
-  const screnRef = useRef(null);
+  const sceneRef = useRef(null);
 
   const projects = useMemo(
     () => [
@@ -41,5 +42,11 @@ export default function Project() {
     ],
     [isMobile],
   );
-  return <Section id="projects" className="relative text-white"></Section>;
+
+  const  {scrollYProgress} = useScroll({
+    target:sceneRef,
+    offset:["start start ", "end end"]
+  })
+  const threshold = projects.map((_,i)=>(i+1)/projects.length)
+  return <Section ref={sceneRef} id="projects" className="relative text-white"></Section>;
 }
